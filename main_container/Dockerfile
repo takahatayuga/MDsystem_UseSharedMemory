@@ -1,8 +1,6 @@
-#FROM centos:centos8
+FROM centos:centos8
 
-FROM cv_template:latest
-
-#COPY src/ /home/src/
+COPY src/ /home/src/
 
 WORKDIR /home
 
