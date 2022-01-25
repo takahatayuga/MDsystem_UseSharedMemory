@@ -36,8 +36,8 @@ int main(){
         return EXIT_FAILURE;
     }
 
-    // 共有メモリIDの取得 (9MB)
-    const long long size = 0x900000;
+    // 共有メモリIDの取得 (50MB)
+    const long long size = 0x5000000;
     const long long seg_id = shmget(key, size,
                               IPC_CREAT | IPC_EXCL | S_IRUSR | S_IWUSR | 0x1b6);
     // 共有メモリIDの取得 (9MB)
