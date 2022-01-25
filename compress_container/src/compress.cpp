@@ -17,7 +17,7 @@
 #include <opencv2/opencv.hpp>
 using namespace std;
 
-#define FRAME_LENGTH = 1920 * 1080 * 3;
+#define FRAME_LENGTH 1920*1080*3
 
 int main(int argc, char *argv[]){
     const key_t key = atoi(argv[1]); // shared key
