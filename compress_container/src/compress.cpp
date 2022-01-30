@@ -39,45 +39,34 @@ int main(int argc, char *argv[]){
         std::exit(EXIT_FAILURE);
     }
 
-    // 共有メモリの文字を読み取る
-    int flag = 0;
-    char c;
-    cout << "If you want to close, please type 'q'" << endl;
-    cout << "If you want to read the shared memory, push enter button." << endl;
-
     unsigned char frame_data[FRAME_LENGTH];
     int buf_index = 0;
+    int count = 0;
 
-    while(flag == 0){
-        cin.get(c);
-        if(c == 'q') flag = 1;
-        if(c == 'g') {
-            memcpy(shared_memory + buf_index * FRAME_LENGTH, frame_data, FRAME_LENGTH);
-            cv::Mat video_image(1080, 1920, CV_8UC3, frame_data);
-            unsigned char *jpeg_frame = NULL;
-            unsigned long jpeg_size = 0;
-            const int tj_stat = tjCompress2(handle,
-                                    video_image.data,
-                                    video_image.cols,
-                                    video_image.cols*COLOR_CHANNEL_NUM,
-                                    video_image.rows,
-                                    TJPF_RGB,
-                                    &jpeg_frame,
-                                    &jpeg_size,
-                                    TJSAMP_444,
-                                    80,
-                                    TJFLAG_FASTDCT
-            );
-            if(tj_stat == JPEG_FAILED){
-            const string err_msg(tjGetErrorStr());
-            cout << err_msg << endl;
-            }else{
-            const string jpeg_str(jpeg_frame, jpeg_frame+jpeg_size);
-            //this->send_bufs[id]->push(jpeg_str);
-            }
-            //cv::imwrite("received_frame.png", received_frame);
-            cout << "get frame." << endl;
-            buf_index = (buf_index + 1) % 8;
+    while(count < 100){
+        memcpy(shared_memory + buf_index * FRAME_LENGTH, frame_data, FRAME_LENGTH);
+        cv::Mat video_image(1080, 1920, CV_8UC3, frame_data);
+        unsigned char *jpeg_frame = NULL;
+        unsigned long jpeg_size = 0;
+        const int tj_stat = tjCompress2(handle,
+                                video_image.data,
+                                video_image.cols,
+                                video_image.cols*COLOR_CHANNEL_NUM,
+                                video_image.rows,
+                                TJPF_RGB,
+                                &jpeg_frame,
+                                &jpeg_size,
+                                TJSAMP_444,
+                                80,
+                                TJFLAG_FASTDCT
+        );
+        if(tj_stat == JPEG_FAILED){
+        const string err_msg(tjGetErrorStr());
+        cout << err_msg << endl;
+        }else{
+        const string jpeg_str(jpeg_frame, jpeg_frame+jpeg_size);
+        }
+        buf_index = (buf_index + 1) % 8;
         }
     }
 
