@@ -63,13 +63,7 @@ int main(){
     int buf_index = 0;
     int count = 0;
     while(count < 100){
-        auto start = std::chrono::system_clock::now();
         video >> video_frame;
-        auto end = std::chrono::system_clock::now();       // 計測終了時刻を保存
-        auto dur = end - start;        // 要した時間を計算
-        auto msec = std::chrono::duration_cast<std::chrono::milliseconds>(dur).count();
-        // 要した時間をミリ秒（1/1000秒）に変換して表示
-        std::cout << msec << " milli sec \n";
         memcpy(shared_memory + buf_index * FRAME_LENGTH, video_frame.data, FRAME_LENGTH);
         buf_index = (buf_index + 1) % 8;
         count++;
