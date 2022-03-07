@@ -2,6 +2,19 @@
 
 This is a middleware for virtualizing a multi-display system running on a single board computer and running it on a Docker container.
 
+
+## Environment in use
+
+### Library
+- OpenCV
+- Gstreamer
+- FFmpeg
+- TurboJPEG
+
+### OS
+- CentOS7 (Container uses Centos8)
+
+
 ## Set Up
 1. Install the Docker.
 2. Clone this repository, and move into the directory.
@@ -36,13 +49,7 @@ This is a middleware for virtualizing a multi-display system running on a single
 `g++ -g3 encoder.cpp -lopencv_core -lopencv_imgproc -lopencv_videoio -lopencv_imgcodecs -lturbojpeg -fpermissive -o encoder`
 - Run `./encoder <shared memory ID>`. 
 
-## Environment in use
 
-### Library
-- OpenCV
-- Gstreamer
-- FFmpeg
-- TurboJPEG
-
-### OS
-- CentOS7 (Container uses Centos8)
+### To Do List
+1. Design of synchronous containers to control frame passing
+2. Implementation of frame passing process to display node
