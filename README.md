@@ -6,6 +6,10 @@ This is a middleware for virtualizing a multi-display system running on a single
 ## Environment in use
 
 ### Library
+(Host PC)
+- Docker
+
+(Docker Container)
 - OpenCV
 - Gstreamer
 - FFmpeg
