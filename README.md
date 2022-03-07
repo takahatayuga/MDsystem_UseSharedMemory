@@ -14,7 +14,7 @@ This is a middleware for virtualizing a multi-display system running on a single
 - Gstreamer
 - FFmpeg
 - TurboJPEG
-(Library installation is described in Dockerfile)
+- (Library installation is described in Dockerfile)
 
 ### OS
 - CentOS7 (Container uses Centos8)
