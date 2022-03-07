@@ -14,7 +14,7 @@ This is a middleware for virtualizing a multi-display system running on a single
 - Gstreamer
 - FFmpeg
 - TurboJPEG
-- (Library installation is described in Dockerfile)
+- (Other Library installation is described in Dockerfile)
 
 ### OS
 - CentOS7 (Container uses Centos8)
@@ -41,7 +41,7 @@ This is a middleware for virtualizing a multi-display system running on a single
 4. Start the container.
 `docker run -it --net=host --ipc=container:<ID of main_container> --privileged --name=compressxxx <image_name> /bin/bash`
 
-### How to run
+## How to run
 
 1. On the Head Container,
 - Build the Program.
@@ -55,6 +55,6 @@ This is a middleware for virtualizing a multi-display system running on a single
 - Run `./encoder <shared memory ID>`. 
 
 
-### To Do List
+## To Do List
 1. Design of synchronous containers to control frame passing
 2. Implementation of frame passing process to display node
