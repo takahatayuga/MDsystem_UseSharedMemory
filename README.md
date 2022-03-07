@@ -6,14 +6,15 @@ This is a middleware for virtualizing a multi-display system running on a single
 ## Environment in use
 
 ### Library
-(Host PC)
+[Host PC]
 - Docker
 
-(Docker Container)
+[Docker Container]
 - OpenCV
 - Gstreamer
 - FFmpeg
 - TurboJPEG
+(Library installation is described in Dockerfile)
 
 ### OS
 - CentOS7 (Container uses Centos8)
